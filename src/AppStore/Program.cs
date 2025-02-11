@@ -13,11 +13,18 @@ builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<ILibroService, LibroService>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 
+// builder.Services.AddDbContext<DataBaseContext>(op =>
+//     op.LogTo(Console.WriteLine, new[] {
+//         DbLoggerCategory.Database.Command.Name},
+//         LogLevel.Information).EnableSensitiveDataLogging()
+//         .UseSqlite(builder.Configuration.GetConnectionString("DefaultConnections"))
+// );
+
 builder.Services.AddDbContext<DataBaseContext>(op =>
     op.LogTo(Console.WriteLine, new[] {
         DbLoggerCategory.Database.Command.Name},
         LogLevel.Information).EnableSensitiveDataLogging()
-        .UseSqlite(builder.Configuration.GetConnectionString("SqliteDatabase"))
+        .UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
 builder.Services.AddIdentity<AplicationUser, IdentityRole>()
