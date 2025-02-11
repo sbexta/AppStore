@@ -1,0 +1,23 @@
+﻿@model AppStore.Models.Domain.Categoria
+@{
+
+}
+
+<form method="post" class="w-40" asp-action="Add" class="w-40">
+	<div class="input-container">
+		<label asp-for="Nombre" class="w-40">Nombre de la categoria</label>
+		<input type="text" class="input" asp-for="Nombre">
+	</div>
+
+	@if(TempData["msg"] != null)
+	{
+		<div class="alert-mb1">
+			@TempData["msg"]
+		</div>
+	}
+
+	<div class="input-container">
+		<button class="btn btn-default">Gurdar</button>
+		<a class="btn btn-sec" href="/Categoria/CategoriaList">Ver todo</a>
+	</div>
+</form>
