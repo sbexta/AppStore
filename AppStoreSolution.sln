@@ -4,22 +4,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{10A4BBD9-0FEA-4D23-9152-F6BF75F592BC}"
+	ProjectSection(SolutionItems) = preProject
+		src\AppStore\Dockerfile = src\AppStore\Dockerfile
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppStore", "src\AppStore\AppStore.csproj", "{DA0A2438-2499-4483-A01A-D60981E1D613}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppStore", "src\AppStore\AppStore.csproj", "{DA0A2438-2499-4483-A01A-D60981E1D613}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DA0A2438-2499-4483-A01A-D60981E1D613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DA0A2438-2499-4483-A01A-D60981E1D613}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA0A2438-2499-4483-A01A-D60981E1D613}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA0A2438-2499-4483-A01A-D60981E1D613}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DA0A2438-2499-4483-A01A-D60981E1D613} = {10A4BBD9-0FEA-4D23-9152-F6BF75F592BC}

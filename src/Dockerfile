@@ -9,12 +9,15 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-# Copiar el archivo del proyecto y restaurar las dependencias
-COPY ["AppStore.csproj", "./"]
+# Copiar el archivo del proyecto AppStore.csproj y restaurar las dependencias
+COPY AppStore/AppStore.csproj ./AppStore/
+
+# Establecer el directorio de trabajo y restaurar las dependencias
+WORKDIR /src/AppStore
 RUN dotnet restore "AppStore.csproj"
 
-# Copiar el resto del código fuente
-COPY . .
+# Copiar el resto del código fuente dentro del contenedor
+COPY AppStore/ /src/AppStore/
 
 # Compilar la aplicación
 RUN dotnet build "AppStore.csproj" -c $BUILD_CONFIGURATION -o /app/build
