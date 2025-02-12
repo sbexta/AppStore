@@ -10,7 +10,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Copiar el archivo del proyecto y restaurar las dependencias
-COPY ["AppStore.csproj", "/src/AppStore/"]
+COPY AppStore.csproj /src/AppStore/
 WORKDIR /src/AppStore
 RUN dotnet restore "AppStore.csproj"
 
