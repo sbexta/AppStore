@@ -1,37 +1,38 @@
-# Imagen base para ejecutar la aplicaciÛn
+# Imagen base para ejecutar la aplicaci√≥n
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
-# Imagen para compilar la aplicaciÛn
+# Imagen para compilar la aplicaci√≥n
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Copiar el archivo del proyecto y restaurar las dependencias
-COPY ["src/AppStore/AppStore.csproj", "src/AppStore/"]
-RUN dotnet restore "src/AppStore/AppStore.csproj"
+COPY ["AppStore.csproj", "/src/AppStore/"]
+WORKDIR /src/AppStore
+RUN dotnet restore "AppStore.csproj"
 
-# Copiar el resto del cÛdigo fuente
+# Copiar el resto del c√≥digo fuente
 COPY . .
 
-# Establecer el directorio de trabajo en la carpeta donde est· el proyecto
+# Establecer el directorio de trabajo en la carpeta donde est√° el proyecto
 WORKDIR "/src/AppStore"
 
-# Compilar la aplicaciÛn
+# Compilar la aplicaci√≥n
 RUN dotnet build "AppStore.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
-# Publicar la aplicaciÛn
+# Publicar la aplicaci√≥n
 FROM build AS publish
 RUN dotnet publish "AppStore.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-# Imagen final para ejecutar la aplicaciÛn
+# Imagen final para ejecutar la aplicaci√≥n
 FROM base AS final
 WORKDIR /app
 
-# Copiar los archivos publicados desde la etapa de publicaciÛn
+# Copiar los archivos publicados desde la etapa de publicaci√≥n
 COPY --from=publish /app/publish .
 
-# Establecer el punto de entrada para ejecutar la aplicaciÛn
+# Establecer el punto de entrada para ejecutar la aplicaci√≥n
 ENTRYPOINT ["dotnet", "AppStore.dll"]
