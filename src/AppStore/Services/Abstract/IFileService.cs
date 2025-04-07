@@ -1,4 +1,4 @@
-namespace AppStore.Repositories.Abstract;
+namespace AppStore.Services.Abstract;
 
 public interface IFileService
 {

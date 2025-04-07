@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using AppStore.Repositories.Abstract;
 using AppStore.Models.Domain;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using AppStore.Services.Abstract;
 
 namespace AppStore.Controllers;
 

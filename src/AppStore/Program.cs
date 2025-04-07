@@ -1,10 +1,19 @@
 using AppStore.Models.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using AppStore.Services.Abstract;
+using AppStore.Services.Implementation;
 using AppStore.Repositories.Implementation;
+using AppStore.Repositories.Interfaz;
 using AppStore.Repositories.Abstract;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add Repository
+builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<ILibroRepository, LibroRepository>();
+builder.Services.AddScoped<IFileRepository, FileRepository>();
+builder.Services.AddScoped<IUserAuthenticationRepository, UserAuthenticationRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -24,7 +33,7 @@ builder.Services.AddDbContext<DataBaseContext>(op =>
     op.LogTo(Console.WriteLine, new[] {
         DbLoggerCategory.Database.Command.Name},
         LogLevel.Information).EnableSensitiveDataLogging()
-        .UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+        .UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnections"))
 );
 
 builder.Services.AddIdentity<AplicationUser, IdentityRole>()

@@ -1,5 +1,5 @@
 ﻿using AppStore.Models.Domain;
-using AppStore.Repositories.Abstract;
+using AppStore.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 

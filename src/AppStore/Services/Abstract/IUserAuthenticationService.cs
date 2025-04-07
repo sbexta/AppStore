@@ -1,6 +1,6 @@
 using AppStore.Models.DTO;
 
-namespace AppStore.Repositories.Abstract;
+namespace AppStore.Services.Abstract;
 
 public interface IUserAuthenticationService
 {

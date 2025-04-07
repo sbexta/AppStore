@@ -1,4 +1,4 @@
-using AppStore.Repositories.Abstract;
+using AppStore.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
 namespace src.AppStore.Controllers;
