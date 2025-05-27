@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mvcapp:
+    build: .
+    ports:
+      - "5000:80"
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db;Database=AppStoreDB;User=sa;Password=S3cur3P@ssw0rd!;Encrypt=False;TrustServerCertificate=True;
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "S3cur3P@ssw0rd!"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+
